@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkyVault — Nuvem Corporativa Inteligente</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    /* 🎨 VARIÁVEIS CSS PARA CORES E FONTES */
+    :root {
+      --cor-primaria: #0056e0;
+      --cor-secundaria: #007bff;
+      --cor-fundo-claro: #f0f5ff;
+      --cor-texto-escuro: #222;
+      --cor-texto-claro: #444;
+      --fundo-gradiente: linear-gradient(180deg, #e6f0ff, #cfe1ff);
+      --sombra-leve: 0 2px 10px rgba(0,0,0,0.08);
+      --sombra-media: 0 8px 25px rgba(0,86,224,0.15);
+      --padding-secao: 80px 20px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Roboto", sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth; /* Garante a suavidade para todos os links internos */
+    }
+
+    body {
+      background: var(--fundo-gradiente);
+      color: var(--cor-texto-escuro);
+      overflow-x: hidden;
+    }
+
+    /* HEADER OTIMIZADO (Mais fino e compacto) */
+    header {
+      background: #fff;
+      box-shadow: var(--sombra-leve);
+      padding: 10px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      height: 50px;
+      width: auto;
+      max-width: 250px;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    header nav a {
+      margin-left: 25px;
+      text-decoration: none;
+      color: var(--cor-texto-escuro);
+      font-weight: 500;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    header nav a:hover {
+      color: var(--cor-primaria);
+      transform: translateY(-2px);
+    }
+
+    /* HERO SECTION */
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      background: linear-gradient(135deg, #0056e0, #007bff, #00c2ff);
+      color: white;
+      background-size: 300% 300%;
+      animation: gradientMove 6s ease infinite;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .hero h2 {
+      font-size: 3.2em;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      max-width: 800px;
+      margin: 0 auto 35px;
+      font-size: 1.15em;
+      line-height: 1.7em;
+      font-weight: 300;
+    }
+
+    .hero a {
+      background: white;
+      color: var(--cor-primaria);
+      padding: 15px 45px;
+      border-radius: 50px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-block;
+      transition: 0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .hero a:hover {
+      background: #e6f0ff;
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+    }
+
+    /* SEÇÕES GERAIS E FEATURES */
+    .section {
+      padding: var(--padding-secao);
+      text-align: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section h3 {
+      font-size: 2.5em;
+      color: var(--cor-primaria);
+      margin-bottom: 40px;
+      font-weight: 700;
+    }
+
+    .section p {
+      color: var(--cor-texto-claro);
+      max-width: 900px;
+      margin: 0 auto 40px;
+      line-height: 1.8em;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .feature {
+      background: var(--cor-fundo-claro);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-bottom: 4px solid var(--cor-secundaria);
+    }
+
+    .feature h4 {
+      color: var(--cor-primaria);
+      font-size: 1.3em;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--sombra-media);
+    }
+
+    /* PLANOS (PRICING) */
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+      align-items: flex-end;
+    }
+
+    .plan {
+      /* Estilo padrão para todos os planos (sem o destaque de 'highlight') */
+      background: linear-gradient(180deg, #f7faff, #e7f1ff);
+      border: 1px solid #cce0ff;
+      border-radius: 20px;
+      box-shadow: 0 6px 25px rgba(0,86,224,0.05);
+      padding: 40px 25px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+
+    /* Remoção dos estilos de destaque do plano Business */
+    .plan:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 30px rgba(0,86,224,0.15);
+    }
+
+    .plan h4 {
+      color: var(--cor-primaria);
+      font-size: 1.6em;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .plan .price {
+      font-size: 3em;
+      color: var(--cor-texto-escuro);
+      margin: 15px 0 30px;
+      font-weight: 900;
+    }
+
+    .plan .price span {
+      font-size: 0.4em;
+      font-weight: 300;
+    }
+
+    .plan ul {
+      list-style: none;
+      text-align: left;
+      margin: 20px 0 35px;
+      line-height: 2.2em;
+      color: var(--cor-texto-claro);
+      font-weight: 400;
+    }
+    
+    .plan ul li::before {
+      content: "✓";
+      margin-right: 10px;
+      color: var(--cor-secundaria);
+      font-weight: 700;
+    }
+
+    .plan button {
+      display: block;
+      width: 100%;
+      background: linear-gradient(90deg, var(--cor-secundaria), var(--cor-primaria));
+      color: white;
+      border: none;
+      padding: 14px 30px;
+      border-radius: 50px;
+      font-size: 1.1em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .plan button:hover {
+      transform: scale(1.02);
+      box-shadow: 0 5px 15px rgba(0,86,224,0.4);
+    }
+
+    /* CONTATO */
+    .contact {
+      background: var(--cor-fundo-claro);
+      padding: var(--padding-secao);
+      text-align: center;
+      box-shadow: 0 -5px 20px rgba(0,0,0,0.05);
+    }
+
+    .contact h3 {
+      color: var(--cor-primaria);
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    .contact p {
+      color: var(--cor-texto-claro);
+      margin-bottom: 25px;
+      font-size: 1.1em;
+    }
+
+    .contact a {
+      background: var(--cor-primaria);
+      color: white;
+      padding: 16px 40px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: 0.3s;
+      font-weight: 700;
+      display: inline-block;
+    }
+
+    .contact a:hover {
+      background: #0041b8;
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    /* MVV */
+    .mvv {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .mvv-card {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+      border: 1px solid #e7f1ff;
+    }
+
+    .mvv-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px rgba(0,86,224,0.1);
+      border-color: var(--cor-primaria);
+    }
+
+    .mvv-card h4 {
+      color: var(--cor-secundaria);
+      font-size: 1.4em;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+    
+    .mvv-card p {
+        margin: 0;
+        line-height: 1.6em;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #003fa3;
+      color: white;
+      text-align: center;
+      padding: 50px 10px;
+      margin-top: 0;
+    }
+
+    .footer-logo {
+      height: 60px;
+      margin-bottom: 15px;
+      width: auto;
+    }
+
+    footer p {
+      font-size: 0.9em;
+      opacity: 0.8;
+    }
+
+    /* RESPONSIVIDADE */
+    @media (max-width: 900px) {
+        .hero h2 { font-size: 2.8em; }
+        .plans { grid-template-columns: 1fr; }
+    }
+    
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 20px;
+      }
+      header nav a {
+          margin: 0 10px;
+      }
+      .hero h2 { font-size: 2em; }
+      .section h3 { font-size: 2em; }
+      .logo { height: 45px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-area">
+      <img src="skyvault.png" alt="Logo SkyVault" class="logo">
+    </div>
+    <nav>
+      <a href="#sobre">Sobre</a>
+      <a href="#planos">Planos</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>O poder da nuvem ao seu alcance</h2>
+    <p>Armazene, gerencie e proteja seus dados com a plataforma de nuvem corporativa mais econômica e segura do Brasil. 
+    **Simples, eficiente e criada para impulsionar o seu negócio.**</p>
+    <a href="#planos" class="scroll-link">Conhecer Planos</a>
+  </section>
+
+  <section id="sobre" class="section">
+    <h3>Sobre a SkyVault</h3>
+    <p>Na **SkyVault**, acreditamos que tecnologia deve simplificar — não complicar. 
+    Por isso, criamos uma solução de nuvem que une **preço acessível, segurança avançada e facilidade de uso** em um só lugar. 
+    Nossa plataforma é totalmente em português, intuitiva e projetada para que qualquer empresa — de pequenas startups a grandes corporações — possa ter acesso à melhor tecnologia de armazenamento de dados.</p>
+
+    <div class="features">
+      <div class="feature">
+        <h4>Economia Real</h4>
+        <p>Planos até 60% mais baratos que os principais concorrentes, com performance superior e controle de custos.</p>
+      </div>
+      <div class="feature">
+        <h4>Segurança Avançada</h4>
+        <p>Criptografia de nível militar, backups automáticos e monitoramento constante dos servidores 24h por dia.</p>
+      </div>
+      <div class="feature">
+        <h4>Integração Total</h4>
+        <p>Conecte facilmente sistemas de ERP, CRM, RH e mais — através de APIs abertas e intuitivas.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="planos" class="section">
+    <h3>Planos SkyVault</h3>
+    <p>Escolha o plano ideal e leve sua empresa para o próximo nível de eficiência e segurança.</p>
+
+    <div class="plans">
+      <div class="plan">
+        <h4>Essential</h4>
+        <p class="price">R$29<span>/mês</span></p>
+        <ul>
+          <li>3 TB de armazenamento SSD</li>
+          <li>3 usuários</li>
+          <li>Suporte por e-mail (24h)</li>
+          <li>Painel em português</li>
+        </ul>
+        <button>Assinar Essential</button>
+      </div>
+
+      <div class="plan">
+        <h4>Business</h4>
+        <p class="price">R$59<span>/mês</span></p>
+        <ul>
+          <li>Todo plano Essential mais:</li>
+          <li>10 TB de armazenamento</li>
+          <li>10 usuários com controle de acesso</li>
+          <li>Integração ERP & CRM nativa</li>
+          <li>Criptografia avançada (End-to-End)</li>
+        </ul>
+        <button>Assinar Business</button>
+      </div>
+
+      <div class="plan">
+        <h4>Enterprise</h4>
+        <p class="price">R$119<span>/mês</span></p>
+        <ul>
+          <li>Todo plano Business mais:</li>
+          <li>Armazenamento ilimitado</li>
+          <li>Usuários ilimitados</li>
+          <li>Suporte 24h por telefone/chat</li>
+          <li>Infraestrutura de servidor dedicada</li>
+        </ul>
+        <button>Assinar Enterprise</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="mvv">
+    <h3>Missão, Visão e Valores</h3>
+    <div class="mvv">
+      <div class="mvv-card">
+        <h4>Missão</h4>
+        <p>Tornar o armazenamento em nuvem acessível, seguro e eficiente para empresas de todos os portes no mercado brasileiro.</p>
+      </div>
+      <div class="mvv-card">
+        <h4>Visão</h4>
+        <p>Ser a principal plataforma de nuvem corporativa da América Latina até 2028, reconhecida pela excelência, inovação e preço justo.</p>
+      </div>
+      <div class="mvv-card">
+        <h4>Valores</h4>
+        <p>Inovação Contínua, Segurança Implacável, Transparência, Proximidade com o Cliente e Compromisso com Resultados Reais.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" class="contact">
+    <h3>Fale Conosco</h3>
+    <p>Quer migrar para a SkyVault ou tirar dúvidas sobre nossos planos? Nossa equipe está pronta para te ajudar.</p>
+    <p>Entre em contato com nosso suporte especializado:</p>
+    <a href="mailto:contato@skyvault.com.br">Entre em Contato por Email</a>
+  </section>
+
+  <footer>
+    <img src="2.png" alt="Logo SkyVault" class="footer-logo">
+    <p>© 2025 SkyVault — Tecnologia em Nuvem Corporativa. Todos os direitos reservados. CNPJ: 00.000.000/0001-00</p>
+  </footer>
+
+  <script>
+    // Função de rolagem suave aprimorada
+    function smoothScroll(targetId) {
+        const target = document.querySelector(targetId);
+        if (!target) return;
+
+        // O cabeçalho tem 70px de altura (10px padding * 2 + 50px logo)
+        const headerHeight = document.querySelector('header').offsetHeight;
+        const offset = target.offsetTop - headerHeight; 
+
+        window.scrollTo({
+            top: offset,
+            behavior: 'smooth'
+        });
+    }
+
+    // 1. Rolagem suave para os links do Header
+    document.querySelectorAll('header nav a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        smoothScroll(this.getAttribute('href'));
+      });
+    });
+    
+    // 2. Rolagem suave para o botão "Conhecer Planos" no Hero
+    document.querySelector('.hero a').addEventListener('click', function(e) {
+      e.preventDefault();
+      smoothScroll(this.getAttribute('href'));
+    });
+
+    // Alerta ao clicar nos botões dos planos (AQUISIÇÃO)
+    document.querySelectorAll('.plan button').forEach(button => {
+      button.addEventListener('click', () => {
+        alert('Obrigado por seu interesse! Em breve você será redirecionado para a página de pagamento seguro da SkyVault.');
+      });
+    });
+  </script>
+</body>
+</html>
