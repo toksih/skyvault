@@ -31,7 +31,7 @@
 
         body {
             /* FUNDO DINÂMICO DE NUVEM */
-            background: radial-gradient(circle at 20% 80%, #929191, transparent 50%),
+            background: radial-gradient(circle at 20% 80%, #cedbe8, transparent 50%),
                         radial-gradient(circle at 80% 20%, #cedbe8, transparent 50%),
                         linear-gradient(135deg, #cedbe8, #cedbe8); /* Fundo principal azul */
             color: var(--cor-texto-escuro);
@@ -215,13 +215,13 @@
             position: relative;
             text-align: center;
             
-            /* USANDO FLEXBOX PARA GARANTIR ALTURA IGUAL E ALINHAR O BOTÃO */
+     
             display: flex; 
             flex-direction: column; 
-            justify-content: space-between; /* Ajusta o espaçamento */
+            justify-content: space-between;
         }
 
-        /* Fundo AZUL ESCURO e texto BRANCO no HOVER */
+    
         .plan:hover {
             transform: scale(1.03);
             background: #01346a; /* Azul Escuro */
@@ -243,7 +243,6 @@
             transition: color 0.3s ease;
         }
         
-        /* CSS ATUALIZADO PARA PREÇO ANTIGO RISCADO (MAIOR E VERMELHO) */
         .plan .old-price {
             font-size: 1.4em; 
             color: #dc3545;
@@ -303,7 +302,7 @@
             transition: 0.3s;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            /* EMPURRA O BOTÃO PARA A BASE DO CARD */
+     
             margin-top: auto;
         }
 
@@ -616,7 +615,7 @@
             const headerHeight = header.offsetHeight;
             const offset = target.offsetTop - headerHeight;
 
-            // Se o browser suportar scroll-behavior: smooth, usa a API nativa
+         
             if ('scrollBehavior' in document.documentElement.style) {
                 window.scrollTo({
                     top: offset,
@@ -625,7 +624,7 @@
                 return;
             }
 
-            // Fallback para browsers antigos (animação manual)
+        
             const startPosition = window.pageYOffset;
             const distance = offset - startPosition;
             const duration = 800;
@@ -650,7 +649,7 @@
             requestAnimationFrame(animation);
         }
 
-        // Adiciona o smooth scroll aos links do menu e do hero
+
         document.querySelectorAll('header nav a, .hero a').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -658,7 +657,7 @@
             });
         });
         
-        // Adiciona o smooth scroll e o alerta aos botões de plano
+ 
         document.querySelectorAll('.plan button').forEach(button => {
             const targetId = button.getAttribute('data-target');
 
